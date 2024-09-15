@@ -1700,7 +1700,7 @@
 		input[type="email"]:focus,
 		select:focus,
 		textarea:focus {
-			box-shadow: 0 0 0 2px #21b2a6;
+			box-shadow: 0 0 0 2px #444545;
 		}
 
 	.select-wrapper {
@@ -3160,7 +3160,7 @@
 		-ms-transition: -ms-transform 0.5s ease;
 		transition: transform 0.5s ease;
 		-webkit-overflow-scrolling: touch;
-		background: #21b2a6;
+		background: #444545;
 		color: #ffffff;
 		height: 100%;
 		max-width: 80%;
@@ -3412,8 +3412,13 @@
 			position: relative;
 			z-index: 1;
 		}
+			/*
+			#banner h2:before{
 
-			#banner h2:before, #banner h2:after {
+			}
+			*/
+
+			#banner h2:after {
 				-moz-transition: width 0.85s ease;
 				-webkit-transition: width 0.85s ease;
 				-ms-transition: width 0.85s ease;
@@ -3438,6 +3443,36 @@
 			#banner h2:after {
 				bottom: 0;
 				right: 0;
+			}
+
+
+			#banner .inner {
+				display: flex;
+				flex-direction: column; /* Stack items vertically */
+				align-items: center; /* Center items horizontally */
+				justify-content: center; /* Center items vertically */
+				height: 100%; /* Ensure it takes the full height */
+			}
+			
+			#banner img#logo {
+				max-width: 400px; /* Adjust logo size */
+				margin-bottom: 0px; /* Add space between logo and text */
+				opacity: 0;
+				transform: scale(0.95);
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			#banner h2 {
+				opacity: 0;
+				transform: scale(0.95);
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			/* Add this for fade-in effect */
+			body:not(.is-loading) #banner img#logo,
+			body:not(.is-loading) #banner h2 {
+				opacity: 1;
+				transform: scale(1);
 			}
 
 		#banner p {
@@ -3624,6 +3659,103 @@
 			}
 
 		}
+
+
+/* Buttons */
+:root {
+    --text: #ffffff;
+    --line: #21b2a6;
+    --line-active: #ffffff;
+}
+
+a.LinkedinLink {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1.15em; /* Ensure it matches the size you want */
+    transition: color .25s, margin .25s;
+    border: none;
+    outline: none;
+}
+
+/* Styling for the animated SVG path */
+a.LinkedinLink svg {
+    width: 76px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    bottom: -10px; /* Adjust if needed to align with the text */
+    transform: translate(-50%, 0); /* Ensure initial position is set */
+    fill: none;
+    stroke: var(--line);
+    stroke-linecap: round;
+    stroke-width: 2px;
+    stroke-dasharray: 69px 278px;
+    stroke-dashoffset: 361px;
+    transition: stroke .25s ease, stroke-dasharray .35s, transform .35s ease; /* Add transition for transform */
+}
+
+/* Hover state for the link */
+a.LinkedinLink:hover {
+    color: var(--line-active); /* Change the color of the text on hover */
+}
+
+a.LinkedinLink:hover svg {
+    stroke: var(--line-active);
+    stroke-dasharray: 180px 278px;
+    transform: translate(-53%, -4px); /* Smoothly move up and left on hover */
+}
+
+
+/* MORPH TEXT ######################## */
+@import url("https://fonts.googleapis.com/css?family=Raleway:900&display=swap");
+
+.morphText {
+    position: relative;
+	top: 0%; /* Adjust vertical position */
+	left: 0%; /* Adjust horizontal position */
+	transform: translate(-50%, 100%); /* Center the element */
+	width: 20em; /* Adjust width */
+	height: 2.2em; /* Adjust height */
+	font-size: 1.25em; /* Adjust font size */
+	text-align: center;
+	overflow: hidden;
+}
+
+.text-morph {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.75em;
+    text-align: center;
+    user-select: none;
+}
+
+.morphText .text1,
+.morphText .text2 {
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+    transition: opacity 1s ease, filter 1s ease;
+}
+
+.morphText .text1 {
+    z-index: 1;
+}
+
+.morphText .text2 {
+    z-index: 0;
+    filter: blur(8px);
+    opacity: 0;
+}
+
+/* END MORPH TEXT ######################## */
+
+
+
 
 /* Main */
 
